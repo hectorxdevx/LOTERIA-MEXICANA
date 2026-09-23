@@ -1,6 +1,6 @@
-# AGENTS.md — Lotería Mexica (PHP + Bootstrap)
+# AGENTS.md — Lotería Mexicana (PHP + Bootstrap)
 
-Página web en PHP de la Lotería Mexica. Proyecto escolar (Programación en Redes, UTM), equipo de 2 personas. Entrega: código + capturas + PDF.
+Página web en PHP de la Lotería Mexicana. Proyecto escolar (Programación en Redes, UTM), equipo de 2 personas. Entrega: código + capturas + PDF.
 
 ## Stack
 
@@ -11,7 +11,7 @@ Página web en PHP de la Lotería Mexica. Proyecto escolar (Programación en Red
 ## Estructura
 
 - `index.php` — punto de entrada: tabla de cartas + formulario de consulta. (El `index.html` actual está vacío: reemplazarlo o eliminarlo, no mantener dos entradas.)
-- `css/estilos.css` — ÚNICO CSS propio: solo paleta mexica y ajustes sobre Bootstrap. No reinventar grid, tablas ni formularios: usar `container`, `table` + `table-responsive`, `row`/`col`, `btn`, `form-control`, `navbar`.
+- `css/estilos.css` — ÚNICO CSS propio: solo paleta Mexicana y ajustes sobre Bootstrap. No reinventar grid, tablas ni formularios: usar `container`, `table` + `table-responsive`, `row`/`col`, `btn`, `form-control`, `navbar`.
 - `js/` — solo eventos que PHP no pueda resolver en servidor (tooltip, mezcla en cliente si aplica).
 - `img/cartas/` — las 54 imágenes (`1.jpg`…`54.jpg` o `.png`). Si falta alguna, usar placeholder; nunca un `<img>` roto.
 - Bootstrap 5.3 vía CDN en `index.php` (sin Sass, sin build):
@@ -33,19 +33,17 @@ $cartas = [
 // Consulta: $cartas[$fila - 1][$col - 1] (índices 0-based, entrada 1-based, validada).
 ```
 
-## Las 54 cartas (nombres oficiales de la hoja de la tarea, por fila)
+## Las 54 cartas (nombres oficiales, por fila)
 
-1. ÁGUILA, JAGUAR, SERPIENTE, SOL, LUNA, ESTRELLA
-2. CALENDARIO, MÁSCARA, MAÍZ, FUEGO, AGUA, TIERRA
-3. PLANTA, FLOR, CASA, CIERVO, CONEJO, TORTUGA
-4. ÁRBOL, CUEVA, ESCUDO, HACHA, LANZA, CAYADO
-5. VASO, XÓLOTL, TEPETL, TLAHUICA*, GUERRERO, DÍA
-6. NOCHE, LLUVIA, RAYO, FLORES, ORO, PLUMA
-7. PESCADO, VENADO, ÁRBOL DE LA VIDA, CACAO, MÚSICA, DANZA
-8. CUATLAHTLI*, HUITZIL, CÓDICE, TETL, MÉXICO, INFINITO
-9. LIBERTAD, UNIÓN, PAZ, AMOR, SABIDURÍA, VIDA
-
-\* Nombres truncados en la hoja (`28. TLAHU…`, `43. CUAT…`): verificar contra la hoja original antes de entregar. NO inventar otros nombres.
+1. EL GALLO, EL DIABLITO, LA DAMA, EL CATRÍN, EL PARAGUAS, LA SIRENA
+2. LA ESCALERA, LA BOTELLA, EL BARRIL, EL ÁRBOL, EL MELÓN, EL VALIENTE
+3. EL GORRITO, LA MUERTE, LA PERA, LA BANDERA, EL BANDOLÓN, EL VIOLONCELLO
+4. LA GARZA, EL PÁJARO, LA MANO, LA BOTA, LA LUNA, EL COTORRO
+5. EL BORRACHO, EL NEGRITO, EL CORAZÓN, LA SANDÍA, EL TAMBOR, EL CAMARÓN
+6. LAS JARAS, EL MÚSICO, LA ARAÑA, EL SOLDADO, LA ESTRELLA, EL CAZO
+7. EL MUNDO, EL APACHE, EL NOPAL, EL ALACRÁN, LA ROSA, LA CALAVERA
+8. LA CAMPANA, EL CANTARITO, EL VENADO, EL SOL, LA CORONA, LA CHALUPA
+9. EL PINO, EL PESCADO, LA PALMA, LA MACETA, EL ARPA, LA RANA
 
 ## Funcionalidades obligatorias (rúbrica)
 

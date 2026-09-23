@@ -1,4 +1,4 @@
-/* Lotería Mexica — ÚNICO CSS propio: paleta + ajustes sobre Bootstrap. */
+/* Lotería Mexicana — ÚNICO CSS propio: paleta + ajustes sobre Bootstrap. */
 :root {
   --azul-noche: #0b2a4a;
   --azul-profundo: #071c33;
@@ -79,8 +79,89 @@ body { background: var(--amate); color: var(--tinta); font-family: Inter, system
 .footer { background: var(--azul-profundo); color: #e8f0fc; margin-top: 1rem; }
 .greca { height: 10px; background: repeating-linear-gradient(90deg, var(--maiz) 0 14px, var(--cochinilla) 14px 28px, var(--jade) 28px 42px, transparent 42px 48px); }
 
+/* Cantador de Lotería */
+.panel-cantador {
+  background: #fffdf8;
+  border: 2px solid var(--maiz);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(11, 42, 74, 0.08);
+  transition: border-color .2s ease;
+}
+.badge-cantador {
+  background: var(--cochinilla);
+  color: #fff;
+  font-size: .85rem;
+  font-weight: 700;
+  padding: .35rem .75rem;
+  border-radius: .4rem;
+}
+.text-cochinilla { color: var(--cochinilla); }
+.cantador-card-hero {
+  background: linear-gradient(135deg, #fffdf4 0%, #fff 100%);
+  border: 2px solid var(--maiz);
+  box-shadow: 0 4px 12px rgba(233, 180, 76, 0.2);
+  border-radius: .8rem;
+}
+.cantador-img-wrap {
+  background: #fdfbf7;
+  padding: .4rem;
+  border-radius: .5rem;
+  border: 1px solid rgba(233, 180, 76, 0.4);
+}
+
+/* Resaltado de cartas en el tablero al ser cantadas */
+@keyframes pulso-cantada {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(233, 180, 76, 0.7); }
+  50% { transform: scale(1.08); box-shadow: 0 0 16px 4px rgba(163, 22, 33, 0.6); }
+  100% { transform: scale(1.04); box-shadow: 0 0 10px 2px rgba(233, 180, 76, 0.8); }
+}
+
+.carta.cantando-ahora {
+  border: 3px solid var(--cochinilla) !important;
+  background: #fffcf0 !important;
+  animation: pulso-cantada .8s ease infinite alternate;
+  z-index: 5;
+  position: relative;
+}
+
+.carta.ya-cantada {
+  position: relative;
+  background: #f7f9fb;
+  opacity: 0.88;
+}
+
+.carta.ya-cantada::after {
+  content: '✓';
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  background: var(--jade);
+  color: #fff;
+  font-size: .65rem;
+  font-weight: 900;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Accesibilidad y enfoque */
+:focus-visible {
+  outline: 3px solid var(--maiz) !important;
+  outline-offset: 2px;
+}
+
+.carta:focus-visible {
+  outline: 3px solid var(--cochinilla) !important;
+}
+
 @media (max-width: 576px) {
-  .carta { min-height: 72px; }
-  .carta-nombre { font-size: .66rem; }
+  .carta { min-height: 72px; padding: .3rem .15rem; }
+  .carta img { max-height: 38px !important; }
+  .carta-nombre { font-size: .62rem; }
   .brand-text strong { font-size: 1.25rem; }
+  .hero-actions { grid-template-columns: 1fr; }
 }
