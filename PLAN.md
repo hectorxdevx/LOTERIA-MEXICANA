@@ -1,16 +1,16 @@
-# PLAN.md — Página Web en PHP · Lotería Mexica
+# PLAN.md — Página Web en PHP · Lotería Mexicana
 
 > Fuente de verdad: `AGENTS.md` (stack PHP + Bootstrap) + imagen de instrucciones de la tarea.
 > El plan anterior con Node/Express queda descartado: la rúbrica exige PHP explícitamente.
 
 ## 1. Objetivo (de la hoja de tarea)
 
-Desarrollar una página web en PHP que muestre la lotería mexica, utilizando
+Desarrollar una página web en PHP que muestre la lotería Mexicana, utilizando
 arreglos bidimensionales para almacenar y manipular la información de las cartas.
 La página permitirá mezclar las cartas, mostrar el nombre de la carta al pasar
 el mouse y consultar una carta específica mediante su fila y columna.
 
-Título del mockup: `Lotería Mexica — Nuestras raíces, en cada carta`.
+Título del mockup: `Lotería Mexicana — Nuestras raíces, en cada carta`.
 Subtítulo de la tarea: `Uso de arreglos bidimensionales, eventos y diseño web`.
 
 ## 2. Stack (según AGENTS.md)
@@ -31,7 +31,7 @@ Subtítulo de la tarea: `Uso de arreglos bidimensionales, eventos y diseño web`
 proyecto loteria mexicana/
 ├── index.php        # punto de entrada: tabla 9x6 + formulario consulta
 ├── index.html       # ACTUAL está vacío/base: reemplazar o eliminar, no mantener dos entradas
-├── css/estilos.css  # ÚNICO CSS propio: paleta mexica + ajustes sobre Bootstrap
+├── css/estilos.css  # ÚNICO CSS propio: paleta Mexicana + ajustes sobre Bootstrap
 ├── js/              # solo eventos que PHP no resuelva en servidor (tooltip, mezcla cliente si aplica)
 ├── img/cartas/      # 54 imágenes (1.jpg…54.jpg o .png). Si falta alguna: placeholder, nunca <img> roto
 ├── PLAN.md          # este archivo
@@ -109,17 +109,17 @@ Numeración del mockup para `img/cartas/`: `1.jpg` = ÁGUILA … `54.jpg` = VIDA
 
 ## 8. Layout según mockup de la imagen
 
-- Header: logo águila + `Lotería Mexica` + `Nuestras raíces, en cada carta` +
+- Header: logo águila + `Lotería Mexicana` + `Nuestras raíces, en cada carta` +
   nav `Inicio | Lotería | Consulta` (navbar Bootstrap, botón activo amarillo).
 - Main (`container` + `row`):
-  - Col izquierda (tabla): `Cartas de la Lotería Mexica`, `table table-responsive`,
+  - Col izquierda (tabla): `Cartas de la Lotería Mexicana`, `table table-responsive`,
     9 filas x 6 celdas, cada celda imagen + número + nombre corto.
   - Aside derecha: card `Consultar carta` (texto ayuda + inputs
     `Fila (1-9)` placeholder `Ej. 3`, `Columna (1-6)` placeholder `Ej. 2` +
     botón `Consultar`), card `Carta encontrada:` (imagen grande + nombre +
     `Fila: X Columna: Y`), card `Ejemplo de interacción`
     (pasa el mouse / ingresa fila y columna / descubre todas las cartas).
-- Footer: `Lotería Mexica • Cultura • Tradición • México` + grecas.
+- Footer: `Lotería Mexicana • Cultura • Tradición • México` + grecas.
 - Paleta: azul marino `#0a2e5c`, azul claro fondo cards, amarillo acento botón
   activo, verde claro fondo `Carta encontrada`.
 
@@ -150,7 +150,7 @@ Numeración del mockup para `img/cartas/`: `1.jpg` = ÁGUILA … `54.jpg` = VIDA
 
 1. Crear `index.php`: `$cartas[9][6]`, mezcla por `?mezclar=1`, tabla con tooltip,
    formulario POST fila/columna, bloque resultado/error, header/nav/footer Bootstrap.
-2. Crear `css/estilos.css`: solo paleta mexica + tweaks (no reescribir Bootstrap).
+2. Crear `css/estilos.css`: solo paleta Mexicana + tweaks (no reescribir Bootstrap).
 3. Crear `js/` mínimo solo si hace falta (activar tooltips).
 4. Poblar `img/cartas/1.jpg…54.jpg` o placeholders.
 5. Eliminar o reemplazar `index.html` para no tener dos entradas.
