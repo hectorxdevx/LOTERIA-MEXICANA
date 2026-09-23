@@ -1,0 +1,86 @@
+/* Lotería Mexica — ÚNICO CSS propio: paleta + ajustes sobre Bootstrap. */
+:root {
+  --azul-noche: #0b2a4a;
+  --azul-profundo: #071c33;
+  --amate: #f7f1de;
+  --maiz: #e9b44c;
+  --cochinilla: #a31621;
+  --jade: #14705c;
+  --tinta: #1e1e1e;
+}
+
+body { background: var(--amate); color: var(--tinta); font-family: Inter, system-ui, sans-serif; }
+
+/* Header hero — el momento memorable: franja noche + tipografía lapidaria */
+.hero { background: linear-gradient(180deg, var(--azul-noche), var(--azul-profundo)); color: #fff; }
+.hero-nav .brand { display: flex; gap: .6rem; align-items: center; }
+.brand-glyph { color: var(--maiz); font-size: 1.6rem; }
+.brand-text { display: grid; line-height: 1.05; }
+.brand-text strong { font-family: Marcellus, serif; font-size: 1.6rem; letter-spacing: .02em; }
+.brand-text small { color: #f3d68a; font-size: .8rem; }
+.hero-nav .nav-link { color: #dbe6f5; border-radius: .5rem; padding: .35rem .9rem; }
+.hero-nav .nav-link.active, .hero-nav .nav-link:hover { background: var(--maiz); color: var(--azul-profundo); font-weight: 700; }
+.hero-body { padding: 1.2rem 0 1.6rem; }
+.hero-kicker { color: #9fc0e8; margin: 0; font-size: .85rem; }
+.hero-title { font-family: Marcellus, serif; font-weight: 400; margin: .2rem 0 .4rem; }
+.hero-title em { color: var(--maiz); font-style: normal; border-bottom: 3px solid var(--cochinilla); }
+.hero-sub { color: #d7e3f6; max-width: 60ch; }
+.hero-actions { display: grid; gap: .5rem; }
+.btn-maiz { background: var(--maiz); color: var(--azul-profundo); font-weight: 700; border: none; }
+.btn-maiz:hover { background: #f3c566; color: var(--azul-profundo); }
+.btn-ghost { border: 1px solid #6f8db3; color: #e8f0fc; }
+.btn-ghost:hover { border-color: var(--maiz); color: var(--maiz); }
+
+/* Tabla — marco códice, cartas de texto grandes (sin imágenes por ahora) */
+.badge-orden { background: var(--azul-noche); color: var(--maiz); font-weight: 600; }
+.tabla-marco { background: #fffdf4; border: 3px solid var(--azul-noche); border-radius: .9rem; overflow: hidden; box-shadow: 6px 6px 0 var(--maiz); }
+.celda { background: transparent; padding: .3rem; }
+.carta {
+  margin: 0; border: 2px solid var(--azul-noche); border-radius: .6rem; background: #fff;
+  min-height: 86px; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .15rem; padding: .5rem .25rem; cursor: default;
+  transition: transform .12s ease;
+}
+.carta:hover { transform: translateY(-2px); outline: 2px solid var(--cochinilla); }
+.carta-num {
+  background: var(--azul-noche); color: var(--maiz); font-weight: 700; font-size: .75rem;
+  border-radius: .35rem; padding: .05rem .45rem;
+}
+.carta-num.grande { font-size: 1.6rem; padding: .1rem .8rem; }
+.carta-nombre { font-size: .72rem; font-weight: 700; line-height: 1.15; }
+.hint { font-size: .8rem; color: #5a6b84; }
+
+/* Animación de reparto/mezcla: cascada al cargar + sacudida al mezclar */
+@keyframes reparto {
+  from { opacity: 0; transform: translateY(14px) rotate(-2deg) scale(.96); }
+  to { opacity: 1; transform: none; }
+}
+#tabla-cartas.reparto .carta { animation: reparto .45s ease both; animation-delay: var(--d, 0ms); }
+#tabla-marco.mezclando .carta { animation: reparto .35s ease both; animation-delay: var(--d, 0ms); }
+@media (prefers-reduced-motion: reduce) {
+  #tabla-cartas.reparto .carta, #tabla-marco.mezclando .carta { animation: none; }
+}
+
+/* Panel lateral */
+.panel { border: 2px solid var(--azul-noche); border-radius: .9rem; }
+.panel-title { display: flex; align-items: center; gap: .5rem; color: var(--azul-noche); font-weight: 700; }
+.dot { background: var(--azul-noche); color: #fff; width: 1.4rem; height: 1.4rem; display: inline-grid; place-items: center; border-radius: 50%; font-size: .8rem; }
+.btn-consultar { background: var(--azul-noche); color: #fff; font-weight: 700; }
+.btn-consultar:hover { background: var(--azul-profundo); color: var(--maiz); }
+.encontrada { background: #eef7ee; }
+.encontrada-tile {
+  display: inline-flex; flex-direction: column; align-items: center; gap: .3rem;
+  border: 3px solid var(--jade); border-radius: .7rem; background: #fff;
+  padding: .8rem 1.6rem; margin-bottom: .4rem;
+}
+.encontrada-nombre, .placeholder-nombre { font-weight: 700; color: var(--azul-noche); margin: .2rem 0; font-size: 1.05rem; }
+
+/* Footer */
+.footer { background: var(--azul-profundo); color: #e8f0fc; margin-top: 1rem; }
+.greca { height: 10px; background: repeating-linear-gradient(90deg, var(--maiz) 0 14px, var(--cochinilla) 14px 28px, var(--jade) 28px 42px, transparent 42px 48px); }
+
+@media (max-width: 576px) {
+  .carta { min-height: 72px; }
+  .carta-nombre { font-size: .66rem; }
+  .brand-text strong { font-size: 1.25rem; }
+}
