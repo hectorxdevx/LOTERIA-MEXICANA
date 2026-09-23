@@ -90,7 +90,7 @@ function e(string $s): string { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8')
     <div class="row align-items-end g-3">
       <div class="col-lg-8">
         <p class="hero-kicker">Proyecto · PHP · Arreglos bidimensionales</p>
-        <h1 class="hero-title">La baraja completa, <em>en una sola tabla viva</em></h1>
+        <h1 class="hero-title">La baraja completa, <em>¡A JUGAR!</em></h1>
         <p class="hero-sub">54 cartas en un arreglo 9 × 6. Mezcla, pasa el mouse para revelar el nombre y consulta por fila y columna con validación en servidor.</p>
       </div>
       <div class="col-lg-4 hero-actions">
@@ -101,9 +101,9 @@ function e(string $s): string { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8')
   </div>
 </header>
 
-<main class="container py-4">
+<main class="container-fluid px-3 py-4">
   <div class="row g-4">
-    <section id="loteria" class="col-lg-8">
+    <section id="loteria" class="col-12">
       <!-- Panel de Control: Cantador de Lotería con Audio -->
       <div class="card panel panel-cantador mb-3">
         <div class="card-body">
@@ -155,39 +155,43 @@ function e(string $s): string { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8')
         </div>
       </div>
 
-      <div class="d-flex align-items-baseline justify-content-between flex-wrap gap-2 mb-2">
-        <h2 class="h4 mb-0">Cartas de la Lotería Mexicana</h2>
-        <span class="badge badge-orden"><?php echo $mezclado ? 'Orden: mezclado' : 'Orden: original 1–54'; ?></span>
-      </div>
-      <div class="table-responsive tabla-marco" id="tabla-marco">
-        <table class="table table-sm align-middle text-center mb-0" id="tabla-cartas">
-          <tbody>
-          <?php foreach ($cartas as $fi => $fila): ?>
-            <tr>
-            <?php foreach ($fila as $ci => $c): ?>
-              <td class="celda">
-                <div class="carta" data-num="<?php echo (int)$c['num']; ?>" data-fila="<?php echo $fi + 1; ?>" data-col="<?php echo $ci + 1; ?>" data-bs-toggle="tooltip" data-bs-title="<?php echo e($c['num'] . '. ' . $c['nombre']); ?>" title="<?php echo e($c['num'] . '. ' . $c['nombre']); ?>" style="--d:<?php echo (($fi * 6 + $ci) * 25); ?>ms">
-                  <span class="carta-num"><?php echo (int)$c['num']; ?></span>
-                  <img src="<?php echo e($c['img']); ?>" alt="<?php echo e($c['nombre']); ?>" class="img-fluid mt-1 mb-1" style="max-height: 50px; object-fit: contain;">
-                  <span class="carta-nombre"><?php echo e($c['nombre']); ?></span>
-                </div>
-              </td>
-            <?php endforeach; ?>
-            </tr>
-          <?php endforeach; ?>
-          </tbody>
-        </table>
-      </div>
-      <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-2">
-        <p class="hint mb-0">Haz clic en cualquier carta para seleccionarla, o pasa el cursor para escuchar al narrador.</p>
-        <div class="form-check form-switch mb-0">
-          <input class="form-check-input" type="checkbox" id="chk-audio-hover" checked>
-          <label class="form-check-label small fw-semibold" for="chk-audio-hover">🔊 Narrar al pasar el mouse</label>
+      <div class="row g-3">
+        <div class="col-xl-9 col-lg-8">
+          <div class="d-flex align-items-baseline justify-content-between flex-wrap gap-2 mb-2">
+            <h2 class="h4 mb-0">Cartas de la Lotería Mexicana</h2>
+            <span class="badge badge-orden"><?php echo $mezclado ? 'Orden: mezclado' : 'Orden: original 1–54'; ?></span>
+          </div>
+          <div class="table-responsive tabla-marco" id="tabla-marco">
+            <table class="table table-sm align-middle text-center mb-0" id="tabla-cartas">
+              <tbody>
+              <?php foreach ($cartas as $fi => $fila): ?>
+                <tr>
+                <?php foreach ($fila as $ci => $c): ?>
+                  <td class="celda">
+                    <div class="celda-wrap">
+                      <div class="carta" data-num="<?php echo (int)$c['num']; ?>" data-fila="<?php echo $fi + 1; ?>" data-col="<?php echo $ci + 1; ?>" data-bs-toggle="tooltip" data-bs-title="<?php echo e($c['num'] . '. ' . $c['nombre']); ?>" title="<?php echo e($c['num'] . '. ' . $c['nombre']); ?>" style="--d:<?php echo (($fi * 6 + $ci) * 25); ?>ms">
+                        <span class="carta-num"><?php echo (int)$c['num']; ?></span>
+                        <img src="<?php echo e($c['img']); ?>" alt="<?php echo e($c['nombre']); ?>">
+                      </div>
+                      <span class="carta-nombre-ext"><?php echo e($c['nombre']); ?></span>
+                    </div>
+                  </td>
+                <?php endforeach; ?>
+                </tr>
+              <?php endforeach; ?>
+              </tbody>
+            </table>
+          </div>
+          <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mt-2">
+            <p class="hint mb-0">Haz clic en cualquier carta para seleccionarla, o pasa el cursor para escuchar al narrador.</p>
+            <div class="form-check form-switch mb-0">
+              <input class="form-check-input" type="checkbox" id="chk-audio-hover" checked>
+              <label class="form-check-label small fw-semibold" for="chk-audio-hover">🔊 Narrar al pasar el mouse</label>
+            </div>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <aside class="col-lg-4" id="consulta">
+        <aside class="col-xl-3 col-lg-4" id="consulta">
       <div class="card panel mb-3">
         <div class="card-body">
           <h3 class="h6 panel-title"><span class="dot" aria-hidden="true">⌕</span> Consultar carta</h3>
@@ -214,7 +218,7 @@ function e(string $s): string { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8')
           <?php if ($resultado): ?>
             <div class="encontrada-tile">
               <span class="carta-num grande"><?php echo (int)$resultado['num']; ?></span>
-              <img src="<?php echo e($resultado['img']); ?>" alt="<?php echo e($resultado['nombre']); ?>" class="img-fluid mt-2 mb-1" style="max-height: 120px;">
+              <img src="<?php echo e($resultado['img']); ?>" alt="<?php echo e($resultado['nombre']); ?>" class="img-fluid mt-2 mb-1" style="max-height: 260px; width: auto; max-width: 100%; object-fit: contain;">
               <span class="encontrada-nombre"><?php echo e($resultado['nombre']); ?></span>
             </div>
             <p class="small text-muted mb-0">Fila: <?php echo (int)$resultado['fila']; ?> &nbsp; Columna: <?php echo (int)$resultado['columna']; ?></p>
@@ -234,7 +238,7 @@ function e(string $s): string { return htmlspecialchars($s, ENT_QUOTES, 'UTF-8')
 <footer class="footer">
   <div class="greca" aria-hidden="true"></div>
   <div class="container d-flex flex-wrap gap-2 justify-content-center py-3">
-    <span>Lotería Mexicana</span><span aria-hidden="true">•</span><span>Cultura</span><span aria-hidden="true">•</span><span>Tradición</span><span aria-hidden="true">•</span><span>México</span>
+    <span>Lotería Mexicana</span><span aria-hidden="true">•</span><span>HECTOR GONZALEZ</span><span aria-hidden="true">•</span><span>CESAR FLORES</span><span aria-hidden="true">•</span><span></span>
   </div>
 </footer>
 
